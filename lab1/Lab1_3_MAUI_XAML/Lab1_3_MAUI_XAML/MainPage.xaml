@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?><ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Lab1_3_MAUI_XAML.MainPage" 
+             Title="Popov XAML Grid">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <Label Text="Работа с MAUI" 
+               Grid.Row="0"  
+               Grid.Column="0" 
+               TextColor="White" 
+               BackgroundColor="Blue" />
+        <BoxView Color="Silver"          
+                 Grid.Row="0" 
+                 Grid.Column="1" />
+        <BoxView Color="Teal" 
+                 Grid.Row="1"  
+                 Grid.Column="0" />
+        <Label Text="Метка в ячейке" 
+               Grid.Row="1"  
+               Grid.Column="1" 
+               TextColor="Purple" 
+               BackgroundColor="Aqua" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" />
+        <Label Text="Объединение двух строк" 
+               Grid.Row="0"  
+               Grid.Column="2"  
+               Grid.RowSpan="2" 
+               TextColor="Yellow" 
+               BackgroundColor="Blue" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" />
+        <Label Text="Объединение двух колонок" 
+               Grid.Row="2"  
+               Grid.Column="0"  
+               Grid.ColumnSpan="2" 
+               TextColor="Blue" 
+               BackgroundColor="Yellow" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" />
+        <Label Text="Размер 100x100" 
+               Grid.Row="2" Grid.Column="2" 
+               TextColor="Aqua" 
+               BackgroundColor="Red" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" />
+    </Grid>
+</ContentPage>

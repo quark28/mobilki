@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:local="clr-namespace:Lab1_4_MAUI_XAML" 
+x:Class="Lab1_4_MAUI_XAML.MainPage" 
+Title="Popov Keypad" 
+BackgroundColor="Lavender" 
+x:DataType="local:KeyPadViewModel">
+    <ContentPage.BindingContext>
+        <local:KeyPadViewModel />
+    </ContentPage.BindingContext>
+    <Grid HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+
+        <Label Text="{Binding DisplayText}" 
+               Margin="0,0,10,0"  
+               FontSize="20" 
+               FontAttributes="Bold" 
+               LineBreakMode="HeadTruncation" 
+               VerticalTextAlignment="Center"  
+               HorizontalTextAlignment="End" 
+               Grid.ColumnSpan="2" />
+
+        <Button Text="&#x21E6;"  
+                FontSize="50" 
+                FontAttributes="Bold" 
+                BackgroundColor="Orange" 
+                Command="{Binding DeleteCharCommand}"  
+                Grid.Column="2"/>
+
+        <Button Text="1" 
+                FontSize="50" 
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                BackgroundColor="Coral" 
+                Command="{Binding AddCharCommand}"  
+                CommandParameter="1" 
+                Grid.Row="1" />
+        <Button Text="2" 
+                FontSize="50" 
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                BackgroundColor="Coral" 
+                Command="{Binding AddCharCommand}"  
+                CommandParameter="2"  
+                Grid.Row="1"  
+                Grid.Column="1" />
+        <Button Text="3"  
+                FontSize="50" 
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                BackgroundColor="Coral" 
+                Command="{Binding AddCharCommand}"  
+                CommandParameter="3"  
+                Grid.Row="1"  
+                Grid.Column="2" />
+        <Button Text="4" 
+                FontSize="50" 
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                BackgroundColor="Coral" 
+                Command="{Binding AddCharCommand}"  
+                CommandParameter="4"  
+                Grid.Row="2" />
+        <Button Text="5" 
+                FontSize="50" 
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                BackgroundColor="Coral" 
+                Command="{Binding AddCharCommand}"  
+                CommandParameter="5"  
+                Grid.Row="2"  
+                Grid.Column="1" />
+        <Button Text="6" 
+                FontSize="50" 
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                BackgroundColor="Coral" 
+                Command="{Binding AddCharCommand}"  
+                CommandParameter="6"  
+                Grid.Row="2"  
+                Grid.Column="2" />
+        <Button Text="7" 
+                FontSize="50" 
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                BackgroundColor="Coral" 
+                Command="{Binding AddCharCommand}"  
+                CommandParameter="7"  
+                Grid.Row="3" />
+        <Button Text="8" 
+                FontSize="50" 
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                BackgroundColor="Coral" 
+                Command="{Binding AddCharCommand}"  
+                CommandParameter="8"  
+                Grid.Row="3"  
+                Grid.Column="1" />
+        <Button Text="9"
+                FontSize="50" 
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                BackgroundColor="Coral" 
+                Command="{Binding AddCharCommand}"  
+                CommandParameter="9"  
+                Grid.Row="3"  
+                Grid.Column="2" />
+        <Button Text="*" 
+                FontSize="50" 
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                BackgroundColor="Orange" 
+                Command="{Binding AddCharCommand}"  
+                CommandParameter="*"  
+                Grid.Row="4" />
+        <Button Text="0" 
+                FontSize="50" 
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                BackgroundColor="Coral" 
+                Command="{Binding AddCharCommand}"  
+                CommandParameter="0"  
+                Grid.Row="4"  
+                Grid.Column="1" />
+        <Button Text="#" 
+                FontSize="50" 
+                FontAttributes="Bold" 
+                TextColor="Black" 
+                BackgroundColor="Orange" 
+                Command="{Binding AddCharCommand}"  
+                CommandParameter="#"  
+                Grid.Row="4"  
+                Grid.Column="2" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Lab1_Team"
+             x:Class="Lab1_Team.MainPage"
+             x:DataType="local:TeamViewModel"
+             Title="Состав команды"
+             BackgroundColor="Lavender">
+
+    <!-- Источник данных для всей страницы (как в задаче 2) -->
+    <ContentPage.BindingContext>
+        <local:TeamViewModel />
+    </ContentPage.BindingContext>
+
+    <!-- Сетка из трёх строк (как в задачах 3 и 7) -->
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20" RowSpacing="15">
+
+        <!-- OneWay: ViewModel -> экран -->
+        <Label Grid.Row="0"
+               Text="{Binding CountText}"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="Black"
+               HorizontalTextAlignment="Center" />
+
+        <!-- Список участников: BindableLayout из лекции 4 -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="10"
+                                 BindableLayout.ItemsSource="{Binding Members}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="local:Student">
+                        <Border Padding="12" Stroke="Gray" BackgroundColor="White">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding FullName}"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+                                <Label Text="{Binding Group, StringFormat='Группа: {0}'}"
+                                       TextColor="DimGray" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Добавление участника -->
+        <VerticalStackLayout Grid.Row="2" Spacing="8">
+            <!-- TwoWay: у Entry.Text это режим по умолчанию -->
+            <Entry Placeholder="ФИО" Text="{Binding NewName}" />
+            <Entry Placeholder="Группа" Text="{Binding NewGroup}" />
+
+            <!-- Тот же NewName, что в поле ввода: обновляется на каждой букве -->
+            <Label Text="{Binding NewName, StringFormat='Будет добавлен: {0}'}"
+                   TextColor="DarkSlateBlue" />
+
+            <!-- Команда вместо Clicked (как в задаче 4) -->
+            <Button Text="Добавить" Command="{Binding AddCommand}" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
