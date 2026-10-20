@@ -1,61 +1,126 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Lab1_Team"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
              x:Class="Lab1_Team.MainPage"
              x:DataType="local:TeamViewModel"
-             Title="Состав команды"
+             Title="Лабораторная работа 1"
              BackgroundColor="Lavender">
+
+    <!-- Словарь ресурсов: используется через {StaticResource} (как в задаче 5) -->
+    <ContentPage.Resources>
+        <Color x:Key="CardColor">White</Color>
+        <Color x:Key="MainTextColor">Black</Color>
+        <Color x:Key="AccentColor">#1A237E</Color>
+        <x:Double x:Key="NameSize">22</x:Double>
+        <x:Double x:Key="GroupSize">18</x:Double>
+    </ContentPage.Resources>
 
     <!-- Источник данных для всей страницы (как в задаче 2) -->
     <ContentPage.BindingContext>
         <local:TeamViewModel />
     </ContentPage.BindingContext>
 
-    <!-- Сетка из трёх строк (как в задачах 3 и 7) -->
-    <Grid RowDefinitions="Auto,*,Auto" Padding="20" RowSpacing="15">
+    <!-- Прокручивается вся страница, поэтому список команды всегда виден целиком -->
+    <ScrollView>
+        <!-- {OnPlatform}: разные отступы на телефоне и на Windows -->
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+              Padding="{OnPlatform Default=20, WinUI=40}"
+              RowSpacing="15">
 
-        <!-- OneWay: ViewModel -> экран -->
-        <Label Grid.Row="0"
-               Text="{Binding CountText}"
-               FontSize="24"
-               FontAttributes="Bold"
-               TextColor="Black"
-               HorizontalTextAlignment="Center" />
+            <!-- Строка 3: слайдер. Объявлен первым в коде, чтобы на него можно было
+                 сослаться через x:Reference. Maximum задан раньше Minimum. -->
+            <Slider x:Name="sizeSlider"
+                    Grid.Row="3"
+                    Maximum="40"
+                    Minimum="16"
+                    Value="30" />
 
-        <!-- Список участников: BindableLayout из лекции 4 -->
-        <ScrollView Grid.Row="1">
-            <VerticalStackLayout Spacing="10"
+            <!-- Строка 0: заголовок, размер шрифта берётся из слайдера ({x:Reference}, как в задаче 7) -->
+            <Label Grid.Row="0"
+                   x:DataType="Slider"
+                   BindingContext="{x:Reference sizeSlider}"
+                   Text="Состав команды"
+                   FontSize="{Binding Value}"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource AccentColor}"
+                   HorizontalTextAlignment="Center" />
+
+            <!-- Строка 1: список участников (BindableLayout из лекции 4) -->
+            <VerticalStackLayout Grid.Row="1"
+                                 Spacing="10"
                                  BindableLayout.ItemsSource="{Binding Members}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="local:Student">
-                        <Border Padding="12" Stroke="Gray" BackgroundColor="White">
+                        <Border Padding="12"
+                                Stroke="DarkBlue"
+                                StrokeThickness="2"
+                                BackgroundColor="{StaticResource CardColor}">
                             <VerticalStackLayout>
                                 <Label Text="{Binding FullName}"
-                                       FontSize="18"
+                                       FontSize="{StaticResource NameSize}"
                                        FontAttributes="Bold"
-                                       TextColor="Black" />
+                                       TextColor="{StaticResource MainTextColor}" />
                                 <Label Text="{Binding Group, StringFormat='Группа: {0}'}"
-                                       TextColor="DimGray" />
+                                       FontSize="{StaticResource GroupSize}"
+                                       TextColor="{StaticResource MainTextColor}" />
                             </VerticalStackLayout>
                         </Border>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
-        </ScrollView>
 
-        <!-- Добавление участника -->
-        <VerticalStackLayout Grid.Row="2" Spacing="8">
-            <!-- TwoWay: у Entry.Text это режим по умолчанию -->
-            <Entry Placeholder="ФИО" Text="{Binding NewName}" />
-            <Entry Placeholder="Группа" Text="{Binding NewGroup}" />
+            <!-- Строка 2: служебная информация -->
+            <VerticalStackLayout Grid.Row="2" Spacing="4">
 
-            <!-- Тот же NewName, что в поле ввода: обновляется на каждой букве -->
-            <Label Text="{Binding NewName, StringFormat='Будет добавлен: {0}'}"
-                   TextColor="DarkSlateBlue" />
+                <!-- Число участников (OneWay: ViewModel -> экран) -->
+                <Label Text="{Binding CountText}"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource MainTextColor}"
+                       HorizontalTextAlignment="Center" />
 
-            <!-- Команда вместо Clicked (как в задаче 4) -->
-            <Button Text="Добавить" Command="{Binding AddCommand}" />
-        </VerticalStackLayout>
-    </Grid>
+                <!-- Текущая дата ({x:Static}, как в задаче 6) -->
+                <Label x:DataType="sys:DateTime"
+                       BindingContext="{x:Static sys:DateTime.Now}"
+                       Text="{Binding StringFormat='Дата: {0:dd.MM.yyyy}'}"
+                       FontSize="16"
+                       TextColor="{StaticResource MainTextColor}"
+                       HorizontalTextAlignment="Center" />
+
+                <!-- Значение слайдера ({x:Reference} + StringFormat) -->
+                <Label x:DataType="Slider"
+                       BindingContext="{x:Reference sizeSlider}"
+                       Text="{Binding Value, StringFormat='Размер заголовка (ползунок ниже): {0:F0}'}"
+                       FontSize="16"
+                       TextColor="{StaticResource MainTextColor}"
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+            <!-- Строка 4: добавление участника -->
+            <VerticalStackLayout Grid.Row="4" Spacing="8">
+                <!-- TwoWay: у Entry.Text это режим по умолчанию -->
+                <Entry Placeholder="Фамилия И.О."
+                       Text="{Binding NewName}"
+                       TextColor="{StaticResource MainTextColor}"
+                       BackgroundColor="{StaticResource CardColor}" />
+                <Entry Placeholder="Группа"
+                       Text="{Binding NewGroup}"
+                       TextColor="{StaticResource MainTextColor}"
+                       BackgroundColor="{StaticResource CardColor}" />
+
+                <!-- Тот же NewName, что в поле ввода: обновляется на каждой букве -->
+                <Label Text="{Binding NewName, StringFormat='Будет добавлен: {0}'}"
+                       FontSize="16"
+                       TextColor="{StaticResource AccentColor}" />
+
+                <!-- Команда вместо Clicked (как в задаче 4) -->
+                <Button Text="Добавить"
+                        Command="{Binding AddCommand}"
+                        BackgroundColor="{StaticResource AccentColor}"
+                        TextColor="White" />
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>

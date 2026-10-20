@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -15,10 +15,10 @@ namespace Lab1_Team
         // поэтому новый участник появляется в списке без ручного обновления
         public ObservableCollection<Student> Members { get; } = new()
         {
-            new Student { FullName = "Лебедев Лев",  Group = "15.27Д-БИ02/24б" },
-            new Student { FullName = "Ишназаров Радмир", Group = "15.27Д-БИ02/24б" },
-            new Student { FullName = "Гусев Никита", Group = "15.27Д-БИ02/24б" },
-            new Student { FullName = "Терзикян Ваагн", Group = "15.27Д-БИ02/24б" }
+            new Student { FullName = "Лебедев Л.",   Group = "15.27Д-БИ02/24б" },
+            new Student { FullName = "Ишназаров Р. Д.", Group = "15.27Д-БИ02/24б" },
+            new Student { FullName = "Гусев Н. С.", Group = "15.27Д-БИ02/24б" },
+            new Student { FullName = "Терзикян В. Г.", Group = "15.27Д-БИ02/24б" }
         };
 
         string _newName = "";
