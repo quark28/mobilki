@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Страница «Кошачьи»: всё размещено в одном макете Grid. -->
+<!-- На каждое животное две строки: картинка слева на обе строки (RowSpan="2"),
+     справа название и описание; белая подложка BoxView на две строки и две колонки -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab2_Team.CatsPage"
+             Title="Кошачьи"
+             BackgroundColor="Lavender">
+
+    <ScrollView>
+        <Grid Padding="20"
+              ColumnSpacing="15"
+              RowSpacing="0"
+              ColumnDefinitions="140,*"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+            <!-- Строка 0: заголовок на обе колонки -->
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Text="Кошачьи"
+                   Margin="0,0,0,15"
+                   FontSize="28" FontAttributes="Bold" TextColor="#1A237E"
+                   HorizontalTextAlignment="Center" />
+
+            <!-- Абиссинская кошка: строки 1 и 2 -->
+            <BoxView Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                     Color="White" CornerRadius="10" Margin="-10,0,-10,10" />
+            <Image Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"
+                   Source="abissincat.png"
+                   HeightRequest="120" Aspect="AspectFit"
+                   Margin="0,10,0,20" />
+            <Label Grid.Row="1" Grid.Column="1"
+                   Text="Абиссинская кошка"
+                   Margin="0,10,0,0"
+                   FontSize="22" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Row="2" Grid.Column="1"
+                   Text="Одна из старейших пород домашних кошек. Родина породы — Эфиопия. Короткая шерсть с переливами, очень активный характер."
+                   Margin="0,4,0,20"
+                   FontSize="16" TextColor="Black" />
+
+            <!-- Бенгальская кошка: строки 3 и 4 -->
+            <BoxView Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                     Color="White" CornerRadius="10" Margin="-10,0,-10,10" />
+            <Image Grid.Row="3" Grid.Column="0" Grid.RowSpan="2"
+                   Source="bengalcat.png"
+                   HeightRequest="120" Aspect="AspectFit"
+                   Margin="0,10,0,20" />
+            <Label Grid.Row="3" Grid.Column="1"
+                   Text="Бенгальская кошка"
+                   Margin="0,10,0,0"
+                   FontSize="22" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Row="4" Grid.Column="1"
+                   Text="Помесь домашней кошки и азиатской леопардовой кошки, выведена в США. Отсюда пятнистый «дикий» окрас."
+                   Margin="0,4,0,20"
+                   FontSize="16" TextColor="Black" />
+
+            <!-- Шотландская вислоухая: строки 5 и 6 -->
+            <BoxView Grid.Row="5" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                     Color="White" CornerRadius="10" Margin="-10,0,-10,10" />
+            <Image Grid.Row="5" Grid.Column="0" Grid.RowSpan="2"
+                   Source="scfoldcat.png"
+                   HeightRequest="120" Aspect="AspectFit"
+                   Margin="0,10,0,20" />
+            <Label Grid.Row="5" Grid.Column="1"
+                   Text="Шотландская вислоухая"
+                   Margin="0,10,0,0"
+                   FontSize="22" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Row="6" Grid.Column="1"
+                   Text="Узнаётся по ушам, сложенным вперёд и вниз. Спокойная и дружелюбная порода родом из Шотландии."
+                   Margin="0,4,0,20"
+                   FontSize="16" TextColor="Black" />
+
+            <!-- Рысь: строки 7 и 8 -->
+            <BoxView Grid.Row="7" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                     Color="White" CornerRadius="10" Margin="-10,0,-10,10" />
+            <Image Grid.Row="7" Grid.Column="0" Grid.RowSpan="2"
+                   Source="linx.png"
+                   HeightRequest="120" Aspect="AspectFit"
+                   Margin="0,10,0,20" />
+            <Label Grid.Row="7" Grid.Column="1"
+                   Text="Рысь"
+                   Margin="0,10,0,0"
+                   FontSize="22" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Row="8" Grid.Column="1"
+                   Text="Дикая кошка лесов Евразии и Северной Америки. Кисточки на ушах, короткий хвост, охотится в основном на зайцев."
+                   Margin="0,4,0,20"
+                   FontSize="16" TextColor="Black" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Меню для FlyoutPage (задача 2). Title обязателен, иначе FlyoutPage выдаст ошибку. -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Lab2_Team"
+             x:Class="Lab2_Team.FlyOutMenuPage"
+             IconImageSource="hamburger.png"
+             Title="Меню"
+             BackgroundColor="White">
+
+    <!-- Макет Grid: строка 0 — шапка с командой, строка 1 — список пунктов меню -->
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Шапка меню: команда, каждая фамилия в своей строке Grid -->
+        <Grid Grid.Row="0"
+              Padding="15"
+              RowSpacing="2"
+              BackgroundColor="#1A237E"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+            <Label Grid.Row="0" Text="Команда"
+                   FontSize="20" FontAttributes="Bold" TextColor="White" />
+            <Label Grid.Row="1" Text="Лебедев Л."      FontSize="16" TextColor="White" />
+            <Label Grid.Row="2" Text="Ишназаров Р. Д." FontSize="16" TextColor="White" />
+            <Label Grid.Row="3" Text="Гусев Н. С."     FontSize="16" TextColor="White" />
+            <Label Grid.Row="4" Text="Терзикян В. Г."  FontSize="16" TextColor="White" />
+            <Label Grid.Row="5" Text="Группа 15.27Д-БИ02/24б"
+                   FontSize="16" FontAttributes="Bold" TextColor="White" />
+        </Grid>
+
+        <!-- Список пунктов меню (как в задаче 2) -->
+        <CollectionView Grid.Row="1"
+                        x:Name="collectionView"
+                        x:FieldModifier="public"
+                        SelectionMode="Single">
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type local:FlyoutPageItem}">
+                    <local:FlyoutPageItem Title="Команда"
+                                          IconSource="contacts.png"
+                                          TargetType="{x:Type local:TeamPage}" />
+                    <local:FlyoutPageItem Title="Кошачьи"
+                                          IconSource="abissincat.png"
+                                          TargetType="{x:Type local:CatsPage}" />
+                    <local:FlyoutPageItem Title="Медведи"
+                                          IconSource="brownbear.png"
+                                          TargetType="{x:Type local:BearsPage}" />
+                    <local:FlyoutPageItem Title="Приматы"
+                                          IconSource="monkeyicon.png"
+                                          TargetType="{x:Type local:MonkeysPage}" />
+                </x:Array>
+            </CollectionView.ItemsSource>
+
+            <!-- Один пункт меню: Grid из двух колонок — иконка и название -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="local:FlyoutPageItem">
+                    <Grid Padding="10,12" ColumnDefinitions="40,*">
+                        <Image Source="{Binding IconSource}"
+                               HeightRequest="32"
+                               WidthRequest="32"
+                               Aspect="AspectFill" />
+                        <Label Grid.Column="1"
+                               Margin="15,0"
+                               Text="{Binding Title}"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               VerticalOptions="Center" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Страница «Медведи»: всё размещено в одном макете Grid. -->
+<!-- На каждое животное две строки: картинка слева на обе строки (RowSpan="2"),
+     справа название и описание; белая подложка BoxView на две строки и две колонки -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab2_Team.BearsPage"
+             Title="Медведи"
+             BackgroundColor="Lavender">
+
+    <ScrollView>
+        <Grid Padding="20"
+              ColumnSpacing="15"
+              RowSpacing="0"
+              ColumnDefinitions="140,*"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+            <!-- Строка 0: заголовок на обе колонки -->
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Text="Медведи"
+                   Margin="0,0,0,15"
+                   FontSize="28" FontAttributes="Bold" TextColor="#1A237E"
+                   HorizontalTextAlignment="Center" />
+
+            <!-- Бурый медведь: строки 1 и 2 -->
+            <BoxView Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                     Color="White" CornerRadius="10" Margin="-10,0,-10,10" />
+            <Image Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"
+                   Source="brownbear.png"
+                   HeightRequest="120" Aspect="AspectFit"
+                   Margin="0,10,0,20" />
+            <Label Grid.Row="1" Grid.Column="1"
+                   Text="Бурый медведь"
+                   Margin="0,10,0,0"
+                   FontSize="22" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Row="2" Grid.Column="1"
+                   Text="Самый широко распространённый вид медведей: Евразия и Северная Америка. Зимой впадает в спячку."
+                   Margin="0,4,0,20"
+                   FontSize="16" TextColor="Black" />
+
+            <!-- Белый медведь: строки 3 и 4 -->
+            <BoxView Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                     Color="White" CornerRadius="10" Margin="-10,0,-10,10" />
+            <Image Grid.Row="3" Grid.Column="0" Grid.RowSpan="2"
+                   Source="polarbear.png"
+                   HeightRequest="120" Aspect="AspectFit"
+                   Margin="0,10,0,20" />
+            <Label Grid.Row="3" Grid.Column="1"
+                   Text="Белый медведь"
+                   Margin="0,10,0,0"
+                   FontSize="22" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Row="4" Grid.Column="1"
+                   Text="Живёт в Арктике. Один из крупнейших наземных хищников, охотится на тюленей со льда."
+                   Margin="0,4,0,20"
+                   FontSize="16" TextColor="Black" />
+
+            <!-- Барибал (чёрный медведь): строки 5 и 6 -->
+            <BoxView Grid.Row="5" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                     Color="White" CornerRadius="10" Margin="-10,0,-10,10" />
+            <Image Grid.Row="5" Grid.Column="0" Grid.RowSpan="2"
+                   Source="schwarzbear.png"
+                   HeightRequest="120" Aspect="AspectFit"
+                   Margin="0,10,0,20" />
+            <Label Grid.Row="5" Grid.Column="1"
+                   Text="Барибал (чёрный медведь)"
+                   Margin="0,10,0,0"
+                   FontSize="22" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Row="6" Grid.Column="1"
+                   Text="Самый распространённый медведь Северной Америки. Отлично лазает по деревьям."
+                   Margin="0,4,0,20"
+                   FontSize="16" TextColor="Black" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Страница «Приматы»: всё размещено в одном макете Grid. -->
+<!-- На каждое животное две строки: картинка слева на обе строки (RowSpan="2"),
+     справа название и описание; белая подложка BoxView на две строки и две колонки -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab2_Team.MonkeysPage"
+             Title="Приматы"
+             BackgroundColor="Lavender">
+
+    <ScrollView>
+        <Grid Padding="20"
+              ColumnSpacing="15"
+              RowSpacing="0"
+              ColumnDefinitions="140,*"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+            <!-- Строка 0: заголовок на обе колонки -->
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Text="Приматы"
+                   Margin="0,0,0,15"
+                   FontSize="28" FontAttributes="Bold" TextColor="#1A237E"
+                   HorizontalTextAlignment="Center" />
+
+            <!-- Орангутан: строки 1 и 2 -->
+            <BoxView Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                     Color="White" CornerRadius="10" Margin="-10,0,-10,10" />
+            <Image Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"
+                   Source="orangutan.png"
+                   HeightRequest="120" Aspect="AspectFit"
+                   Margin="0,10,0,20" />
+            <Label Grid.Row="1" Grid.Column="1"
+                   Text="Орангутан"
+                   Margin="0,10,0,0"
+                   FontSize="22" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Row="2" Grid.Column="1"
+                   Text="Живёт на островах Борнео и Суматра. Почти всю жизнь проводит на деревьях, рыжая шерсть и очень длинные руки."
+                   Margin="0,4,0,20"
+                   FontSize="16" TextColor="Black" />
+
+            <!-- Шимпанзе: строки 3 и 4 -->
+            <BoxView Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                     Color="White" CornerRadius="10" Margin="-10,0,-10,10" />
+            <Image Grid.Row="3" Grid.Column="0" Grid.RowSpan="2"
+                   Source="shimpanzee.png"
+                   HeightRequest="120" Aspect="AspectFit"
+                   Margin="0,10,0,20" />
+            <Label Grid.Row="3" Grid.Column="1"
+                   Text="Шимпанзе"
+                   Margin="0,10,0,0"
+                   FontSize="22" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Row="4" Grid.Column="1"
+                   Text="Обитает в Центральной и Западной Африке. Один из ближайших родственников человека, умеет пользоваться простыми орудиями."
+                   Margin="0,4,0,20"
+                   FontSize="16" TextColor="Black" />
+
+            <!-- Тамарин: строки 5 и 6 -->
+            <BoxView Grid.Row="5" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                     Color="White" CornerRadius="10" Margin="-10,0,-10,10" />
+            <Image Grid.Row="5" Grid.Column="0" Grid.RowSpan="2"
+                   Source="tamarin.png"
+                   HeightRequest="120" Aspect="AspectFit"
+                   Margin="0,10,0,20" />
+            <Label Grid.Row="5" Grid.Column="1"
+                   Text="Тамарин"
+                   Margin="0,10,0,0"
+                   FontSize="22" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Row="6" Grid.Column="1"
+                   Text="Небольшая обезьяна Южной и Центральной Америки весом меньше килограмма. Живёт семейными группами."
+                   Margin="0,4,0,20"
+                   FontSize="16" TextColor="Black" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Страница команды: таблица на макете Grid (3 колонки × 6 строк) -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab2_Team.TeamPage"
+             Title="Команда"
+             BackgroundColor="Lavender">
+
+    <ScrollView>
+        <!-- Тёмный фон Grid + промежутки 2 между ячейками = рамки таблицы -->
+        <Grid Margin="20"
+              Padding="2"
+              ColumnSpacing="2"
+              RowSpacing="2"
+              BackgroundColor="#1A237E"
+              VerticalOptions="Start"
+              ColumnDefinitions="Auto,*,Auto"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+
+            <!-- Строка 0: заголовок на все 3 колонки (ColumnSpan) -->
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                   Text="Лабораторная работа 2: страницы и макеты"
+                   Padding="12" FontSize="22" FontAttributes="Bold"
+                   TextColor="White" BackgroundColor="#1A237E"
+                   HorizontalTextAlignment="Center" />
+
+            <!-- Строка 1: шапка таблицы -->
+            <Label Grid.Row="1" Grid.Column="0" Text="№"
+                   Padding="10" FontSize="18" FontAttributes="Bold"
+                   TextColor="White" BackgroundColor="#3949AB" />
+            <Label Grid.Row="1" Grid.Column="1" Text="Фамилия И. О."
+                   Padding="10" FontSize="18" FontAttributes="Bold"
+                   TextColor="White" BackgroundColor="#3949AB" />
+            <Label Grid.Row="1" Grid.Column="2" Text="Группа"
+                   Padding="10" FontSize="18" FontAttributes="Bold"
+                   TextColor="White" BackgroundColor="#3949AB" />
+
+            <!-- Строки 2–5: участники -->
+            <Label Grid.Row="2" Grid.Column="0" Text="1"
+                   Padding="10" FontSize="20" TextColor="Black" BackgroundColor="White" />
+            <Label Grid.Row="2" Grid.Column="1" Text="Лебедев Л."
+                   Padding="10" FontSize="20" FontAttributes="Bold" TextColor="Black" BackgroundColor="White" />
+            <Label Grid.Row="2" Grid.Column="2" Text="15.27Д-БИ02/24б"
+                   Padding="10" FontSize="20" TextColor="Black" BackgroundColor="White" />
+
+            <Label Grid.Row="3" Grid.Column="0" Text="2"
+                   Padding="10" FontSize="20" TextColor="Black" BackgroundColor="White" />
+            <Label Grid.Row="3" Grid.Column="1" Text="Ишназаров Р. Д."
+                   Padding="10" FontSize="20" FontAttributes="Bold" TextColor="Black" BackgroundColor="White" />
+            <Label Grid.Row="3" Grid.Column="2" Text="15.27Д-БИ02/24б"
+                   Padding="10" FontSize="20" TextColor="Black" BackgroundColor="White" />
+
+            <Label Grid.Row="4" Grid.Column="0" Text="3"
+                   Padding="10" FontSize="20" TextColor="Black" BackgroundColor="White" />
+            <Label Grid.Row="4" Grid.Column="1" Text="Гусев Н. С."
+                   Padding="10" FontSize="20" FontAttributes="Bold" TextColor="Black" BackgroundColor="White" />
+            <Label Grid.Row="4" Grid.Column="2" Text="15.27Д-БИ02/24б"
+                   Padding="10" FontSize="20" TextColor="Black" BackgroundColor="White" />
+
+            <Label Grid.Row="5" Grid.Column="0" Text="4"
+                   Padding="10" FontSize="20" TextColor="Black" BackgroundColor="White" />
+            <Label Grid.Row="5" Grid.Column="1" Text="Терзикян В. Г."
+                   Padding="10" FontSize="20" FontAttributes="Bold" TextColor="Black" BackgroundColor="White" />
+            <Label Grid.Row="5" Grid.Column="2" Text="15.27Д-БИ02/24б"
+                   Padding="10" FontSize="20" TextColor="Black" BackgroundColor="White" />
+        </Grid>
+    </ScrollView>
+</ContentPage>
