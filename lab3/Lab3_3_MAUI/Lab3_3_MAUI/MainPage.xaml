@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Задача 3: Stepper. Цвета заменены на отличающиеся от методички -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab3_3_MAUI.MainPage"
+             BackgroundColor="Honeydew"
+             Title="Stepper Project">
+
+    <ScrollView>
+        <StackLayout Margin="20">
+
+            <!-- Команда: фамилии, инициалы, группа (не в Title) -->
+            <Border BackgroundColor="DarkGreen" StrokeThickness="0" Padding="15">
+                <VerticalStackLayout Spacing="2">
+                    <Label Text="Команда" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                    <Label Text="Лебедев Л." FontSize="18" TextColor="White" />
+                    <Label Text="Ишназаров Р. Д." FontSize="18" TextColor="White" />
+                    <Label Text="Гусев Н. С." FontSize="18" TextColor="White" />
+                    <Label Text="Терзикян В. Г." FontSize="18" TextColor="White" />
+                    <Label Text="Группа 15.27Д-БИ02/24б" FontSize="18" FontAttributes="Bold" TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Текст поворачивается на угол = значению Stepper (привязка через x:Reference).
+                 Margin сверху и снизу — чтобы повёрнутый текст не налезал на соседей -->
+            <Label Text="Вращение текста"
+                   Rotation="{Binding Source={x:Reference step}, Path=Value}"
+                   Margin="0,80,0,80"
+                   FontSize="20"
+                   BackgroundColor="DarkOliveGreen"
+                   TextColor="Gold"
+                   WidthRequest="200"
+                   HeightRequest="50"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontAttributes="Bold" />
+
+            <!-- Stepper: кнопки «−» и «+», шаг 30, диапазон 0..360 -->
+            <Stepper x:Name="step"
+                     Maximum="360"
+                     Increment="30"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center" />
+
+            <!-- Текущее значение Stepper, тоже через привязку -->
+            <Label Text="{Binding Source={x:Reference step}, Path=Value, StringFormat='Значение свойства Value равно {0:F0}'}"
+                   Margin="0,15,0,0"
+                   FontSize="20"
+                   TextColor="DarkSlateBlue"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

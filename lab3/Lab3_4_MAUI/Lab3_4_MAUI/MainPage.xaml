@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Задача 4: Label. Цвета заменены на отличающиеся от методички -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab3_4_MAUI.MainPage"
+             BackgroundColor="Linen"
+             Title="Label Project">
+
+    <ScrollView>
+        <StackLayout Padding="5,10">
+
+            <!-- Команда: фамилии, инициалы, группа (не в Title) -->
+            <Border BackgroundColor="Navy" StrokeThickness="0" Padding="15" Margin="5,0,5,10">
+                <VerticalStackLayout Spacing="2">
+                    <Label Text="Команда" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                    <Label Text="Лебедев Л." FontSize="18" TextColor="White" />
+                    <Label Text="Ишназаров Р. Д." FontSize="18" TextColor="White" />
+                    <Label Text="Гусев Н. С." FontSize="18" TextColor="White" />
+                    <Label Text="Терзикян В. Г." FontSize="18" TextColor="White" />
+                    <Label Text="Группа 15.27Д-БИ02/24б" FontSize="18" FontAttributes="Bold" TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Параметры по умолчанию (цвет задан явно, чтобы отличался от методички) -->
+            <Label Padding="10"
+                   TextColor="Navy"
+                   Text="Это текст с параметрами отображения по умолчанию" />
+
+            <!-- Жирный, расстояние между буквами 5 -->
+            <Label Padding="10"
+                   FontSize="20" TextColor="Navy"
+                   Text="Стиль bold, интервал между буквами равен 5"
+                   FontAttributes="Bold"
+                   CharacterSpacing="5" />
+
+            <!-- Подчёркивание и зачёркивание -->
+            <Label Padding="10" FontSize="20" TextColor="Navy"
+                   TextDecorations="Underline"
+                   Text="Текст с подчеркиванием" />
+            <Label Padding="10" FontSize="20" TextColor="Navy"
+                   TextDecorations="Strikethrough"
+                   Text="Перечеркнутый текст" />
+
+            <!-- Не больше 2 строк, лишнее обрезается многоточием в середине -->
+            <Label Padding="10" FontSize="30"
+                   TextColor="Navy"
+                   Text="Усечение текста в элементе управления Label"
+                   LineBreakMode="MiddleTruncation"
+                   MaxLines="2" />
+
+            <!-- Один Label, три куска (Span) с разным оформлением -->
+            <Label Padding="10">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Red Bold Text, "
+                              TextColor="Crimson"
+                              FontAttributes="Bold"
+                              FontSize="18" />
+                        <Span Text="Default Text, "
+                              TextColor="DarkCyan"
+                              FontSize="20" />
+                        <Span Text="Italic small text"
+                              TextColor="Purple"
+                              FontAttributes="Italic"
+                              FontSize="22" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <!-- Перенос по словам и разная высота строки (LineHeight) -->
+            <Label Padding="10"
+                   LineBreakMode="WordWrap"
+                   TextColor="DarkSlateGray"
+                   FontSize="20"
+                   Text="Чтобы нарисовать прямоугольник, необходимо создать объект Rectangle"
+                   LineHeight="1.5" />
+            <Label Padding="10"
+                   LineBreakMode="WordWrap"
+                   TextColor="Chocolate"
+                   FontSize="20"
+                   Text="Чтобы закрасить прямоугольник, необходимо использовать свойство Fill"
+                   LineHeight="2.5" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

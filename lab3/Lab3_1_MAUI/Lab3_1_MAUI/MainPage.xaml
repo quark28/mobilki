@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Задача 1: CheckBox. Цвета заменены на отличающиеся от методички -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab3_1_MAUI.MainPage"
+             BackgroundColor="#E8F5E9"
+             Title="CheckBox Project">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Команда: фамилии, инициалы, группа (не в Title) -->
+            <Border BackgroundColor="MidnightBlue" StrokeThickness="0" Padding="15">
+                <VerticalStackLayout Spacing="2">
+                    <Label Text="Команда" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                    <Label Text="Лебедев Л." FontSize="18" TextColor="White" />
+                    <Label Text="Ишназаров Р. Д." FontSize="18" TextColor="White" />
+                    <Label Text="Гусев Н. С." FontSize="18" TextColor="White" />
+                    <Label Text="Терзикян В. Г." FontSize="18" TextColor="White" />
+                    <Label Text="Группа 15.27Д-БИ02/24б" FontSize="18" FontAttributes="Bold" TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Код задачи 1: Grid из 3 строк и 4 колонок -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*" />
+                    <ColumnDefinition Width="0.20*" />
+                    <ColumnDefinition Width="0.35*" />
+                    <ColumnDefinition Width="0.20*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="200" />
+                </Grid.RowDefinitions>
+
+                <!-- Строка 0: курсив и жирный (FontAttributes) -->
+                <Label Text="Italic:"
+                       TextColor="MidnightBlue" FontAttributes="Bold"
+                       FontSize="16"
+                       VerticalOptions="Center" />
+                <CheckBox Grid.Column="1"
+                          Color="Indigo"
+                          CheckedChanged="OnItalic"
+                          VerticalOptions="Center" />
+                <Label Grid.Column="2"
+                       Text="Bold:"
+                       TextColor="MidnightBlue" FontAttributes="Bold"
+                       FontSize="16"
+                       VerticalOptions="Center" />
+                <CheckBox Grid.Column="3"
+                          Color="Crimson"
+                          CheckedChanged="OnBold"
+                          VerticalOptions="Center" />
+
+                <!-- Строка 1: подчёркивание и зачёркивание (TextDecorations) -->
+                <Label Grid.Row="1"
+                       Text="Underline:"
+                       TextColor="MidnightBlue" FontAttributes="Bold"
+                       FontSize="16"
+                       VerticalOptions="Center" />
+                <CheckBox Grid.Row="1"
+                          Grid.Column="1"
+                          Color="SeaGreen"
+                          CheckedChanged="OnUnderline"
+                          VerticalOptions="Center" />
+                <Label Grid.Row="1"
+                       Grid.Column="2"
+                       Text="Strikethrough:"
+                       TextColor="MidnightBlue" FontAttributes="Bold"
+                       FontSize="16"
+                       VerticalOptions="Center" />
+                <CheckBox Grid.Row="1"
+                          Grid.Column="3"
+                          Color="RoyalBlue"
+                          CheckedChanged="OnStrikethrough"
+                          VerticalOptions="Center" />
+
+                <!-- Строка 2: текст, к которому применяется форматирование.
+                     Стартовый Bold убран, чтобы галочка Bold реально включала жирный. -->
+                <Label x:Name="label"
+                       Grid.Row="2"
+                       Grid.ColumnSpan="4"
+                       TextColor="DarkSlateBlue"
+                       FontSize="30"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       Text="Форматирование текста в элементе управления Label" />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

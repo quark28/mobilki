@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Задача 2: RadioButton. Цвета заменены на отличающиеся от методички -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab3_2_MAUI.MainPage"
+             Title="RadioButton Project"
+             BackgroundColor="MistyRose">
+
+    <!-- Стиль для всех RadioButton на странице: свой цвет текста -->
+    <ContentPage.Resources>
+        <Style TargetType="RadioButton">
+            <Setter Property="TextColor" Value="MidnightBlue" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Margin="10" Spacing="6">
+
+            <!-- Команда: фамилии, инициалы, группа (не в Title) -->
+            <Border BackgroundColor="DarkSlateGray" StrokeThickness="0" Padding="15" Margin="0,0,0,10">
+                <VerticalStackLayout Spacing="2">
+                    <Label Text="Команда" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                    <Label Text="Лебедев Л." FontSize="18" TextColor="White" />
+                    <Label Text="Ишназаров Р. Д." FontSize="18" TextColor="White" />
+                    <Label Text="Гусев Н. С." FontSize="18" TextColor="White" />
+                    <Label Text="Терзикян В. Г." FontSize="18" TextColor="White" />
+                    <Label Text="Группа 15.27Д-БИ02/24б" FontSize="18" FontAttributes="Bold" TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Text="Работа с RadioButton"
+                   TextColor="Indigo"
+                   FontSize="50"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Группа 1: цвета. GroupName отделяет её от группы фруктов:
+                 без него все 8 кнопок в одном StackLayout были бы одной группой,
+                 и выбор фрукта снимал бы выбор цвета -->
+            <Label Text="Какой Ваш любимый цвет?"
+                   FontSize="20" TextColor="DarkGreen" />
+            <RadioButton Content="Red" GroupName="colors"
+                         CheckedChanged="OnColorChanged" />
+            <RadioButton Content="Green" GroupName="colors"
+                         CheckedChanged="OnColorChanged" />
+            <RadioButton Content="Blue" GroupName="colors"
+                         CheckedChanged="OnColorChanged" />
+            <RadioButton Content="Other" GroupName="colors"
+                         CheckedChanged="OnColorChanged" />
+            <Label x:Name="colorLabel"
+                   Text="Ваш любимый цвет:"
+                   FontSize="18" FontAttributes="Bold" TextColor="Indigo" />
+
+            <!-- Группа 2: фрукты -->
+            <Label Text="Какой Ваш любимый фрукт?"
+                   FontSize="20" TextColor="DarkSlateBlue" Margin="0,15,0,0" />
+            <RadioButton Content="Apple" GroupName="fruits"
+                         CheckedChanged="OnFruitChanged" />
+            <RadioButton Content="Banana" GroupName="fruits"
+                         CheckedChanged="OnFruitChanged" />
+            <RadioButton Content="Pineapple" GroupName="fruits"
+                         CheckedChanged="OnFruitChanged" />
+            <RadioButton Content="Other" GroupName="fruits"
+                         CheckedChanged="OnFruitChanged" />
+            <Label x:Name="fruitLabel"
+                   Text="Ваш любимый фрукт:"
+                   FontSize="18" FontAttributes="Bold" TextColor="Indigo" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
